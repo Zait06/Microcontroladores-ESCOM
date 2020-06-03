@@ -49,22 +49,30 @@ load:
 	clr cont	
 
 loop:
-	ldi ZL, 20
-	;rjmp comparar00
-	add ZL, cont
-	ld aux, Z
+	;ldi ZL, 20
+	rcall comparar00
+	rcall comparar01
+	rcall comparar02
+	;add ZL, cont
+	;ld aux, Z
 	out PORTA, aux
-	out PORTC, aux2
+	out PORTC, cont
 	rjmp loop
 
 sube:				; Si llega a 10 el contador, este se inica de nuevo en cero
-	inc cont
+	add cont,aux2
 	cpi cont, 10
-	breq a_dece
+	breq a_dece00
+	cpi cont, $ff
+	breq a_dece01
 	reti
 
-a_dece:
+a_dece00:
 	clr cont
+	reti
+
+a_dece01:
+	ldi cont,$09
 	reti
 
 incre:
@@ -72,21 +80,36 @@ incre:
 	reti
 
 decre:
-	ldi aux2, $02
+	ldi aux2, $ff
 	reti
 
 pause:
-	ldi aux2, $03
+	ldi aux2, $00
 	reti
 
 comparar00:
 	cpi aux2, $01
 	breq suma
-	reti
+	ret
 
 suma:
 	ldi ZL, 20
 	add ZL, cont
 	ld aux, Z
-	out PORTA, aux
-	reti
+	ret
+
+comparar01:
+	cpi aux2, $ff
+	breq resta
+	ret
+
+resta:
+	ldi ZL, 29
+	sub ZL, cont
+	ld aux, Z
+	ret
+
+comparar02:
+	cpi aux2, $00
+	breq suma
+	ret

@@ -1,18 +1,18 @@
 <ASSEMBLER_INFO>
  <VERSION>2.2.7</VERSION>
  <DEVICE>"ATmega8535"</DEVICE>
- <WORKING_DIR>C:\Users\zait-\Documents\Microcontroladores\Practica05\codigo05\codigo05\Debug</WORKING_DIR>
+ <WORKING_DIR>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\Debug</WORKING_DIR>
  <INCLUDE_PATH>
   <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc</DIR>
   <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
   <DIR>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes</DIR>
  </INCLUDE_PATH>
- <SOURCE_FILE>C:\Users\zait-\Documents\Microcontroladores\Practica05\codigo05\codigo05\main.asm</SOURCE_FILE>
+ <SOURCE_FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m8535def.inc</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
-  <FILE>C:\Users\zait-\Documents\Microcontroladores\Practica05\codigo05\codigo05\Debug\codigo05.obj</FILE>
+  <FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\Debug\codigo05.obj</FILE>
  </OBJECT_FILES>
  <HEX_FILES>
   <FILE>codigo05.hex</FILE>
@@ -22,15 +22,19 @@
   <FILE>codigo05.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <main><FILE>C:\Users\zait-\Documents\Microcontroladores\Practica05\codigo05\codigo05\main.asm</FILE><LINE>15</LINE></main>
-  <incre><FILE>C:\Users\zait-\Documents\Microcontroladores\Practica05\codigo05\codigo05\main.asm</FILE><LINE>70</LINE></incre>
-  <decre><FILE>C:\Users\zait-\Documents\Microcontroladores\Practica05\codigo05\codigo05\main.asm</FILE><LINE>74</LINE></decre>
-  <sube><FILE>C:\Users\zait-\Documents\Microcontroladores\Practica05\codigo05\codigo05\main.asm</FILE><LINE>60</LINE></sube>
-  <pause><FILE>C:\Users\zait-\Documents\Microcontroladores\Practica05\codigo05\codigo05\main.asm</FILE><LINE>78</LINE></pause>
-  <load><FILE>C:\Users\zait-\Documents\Microcontroladores\Practica05\codigo05\codigo05\main.asm</FILE><LINE>36</LINE></load>
-  <loop><FILE>C:\Users\zait-\Documents\Microcontroladores\Practica05\codigo05\codigo05\main.asm</FILE><LINE>51</LINE></loop>
-  <a_dece><FILE>C:\Users\zait-\Documents\Microcontroladores\Practica05\codigo05\codigo05\main.asm</FILE><LINE>66</LINE></a_dece>
-  <comparar00><FILE>C:\Users\zait-\Documents\Microcontroladores\Practica05\codigo05\codigo05\main.asm</FILE><LINE>82</LINE></comparar00>
-  <suma><FILE>C:\Users\zait-\Documents\Microcontroladores\Practica05\codigo05\codigo05\main.asm</FILE><LINE>87</LINE></suma>
+  <main><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>15</LINE></main>
+  <incre><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>78</LINE></incre>
+  <decre><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>82</LINE></decre>
+  <sube><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>62</LINE></sube>
+  <pause><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>86</LINE></pause>
+  <load><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>36</LINE></load>
+  <loop><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>51</LINE></loop>
+  <comparar00><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>90</LINE></comparar00>
+  <comparar01><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>101</LINE></comparar01>
+  <comparar02><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>112</LINE></comparar02>
+  <a_dece00><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>70</LINE></a_dece00>
+  <a_dece01><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>74</LINE></a_dece01>
+  <suma><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>95</LINE></suma>
+  <resta><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>106</LINE></resta>
  </LABELS>
 </ASSEMBLER_INFO>
