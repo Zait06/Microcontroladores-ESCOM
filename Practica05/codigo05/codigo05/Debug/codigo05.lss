@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.7  C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm Wed Jun 03 13:30:13 2020
+AVRASM ver. 2.2.7  C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm Thu Jun 04 10:56:30 2020
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m8535def.inc'
 C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm(2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m8535def.inc'
@@ -1005,7 +1005,7 @@ C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\
                                  
                                  comparar02:
 000057 3020                      	cpi aux2, $00
-000058 f399                      	breq suma
+000058 8100                      	ld aux, Z
 
 
 RESOURCE USE INFORMATION
@@ -1023,9 +1023,9 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega8535" register use summary:
-x  :   0 y  :   0 z  :   2 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
+x  :   0 y  :   0 z  :   3 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  21 r17:   9 r18:   8 r19:   0 r20:   1 
+r13:   0 r14:   0 r15:   0 r16:  22 r17:   9 r18:   8 r19:   0 r20:   1 
 r21:   1 r22:   1 r23:   1 r24:   1 r25:   1 r26:   1 r27:   1 r28:   1 
 r29:   1 r30:   4 r31:   1 
 Registers used: 16 out of 35 (45.7%)
@@ -1033,14 +1033,14 @@ Registers used: 16 out of 35 (45.7%)
 "ATmega8535" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   2 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
-brcc  :   0 brcs  :   0 breq  :   5 brge  :   0 brhc  :   0 brhs  :   0 
+brcc  :   0 brcs  :   0 breq  :   4 brge  :   0 brhc  :   0 brhs  :   0 
 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 brne  :   0 
 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 brvs  :   0 
 bset  :   0 bst   :   0 cbi   :   0 cbr   :   0 clc   :   0 clh   :   0 
 cli   :   0 cln   :   0 clr   :   3 cls   :   0 clt   :   0 clv   :   0 
 clz   :   0 com   :   0 cp    :   0 cpc   :   0 cpi   :   5 cpse  :   0 
 dec   :   0 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 icall :   0 
-ijmp  :   0 in    :   0 inc   :   0 ld    :   2 ldd   :   0 ldi   :  24 
+ijmp  :   0 in    :   0 inc   :   0 ld    :   3 ldd   :   0 ldi   :  24 
 lds   :   0 lpm   :   0 lsl   :   0 lsr   :   0 mov   :   0 movw  :   0 
 mul   :   0 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 or    :   0 
 ori   :   0 out   :  12 pop   :   0 push  :   0 rcall :   3 ret   :   5 

@@ -111,5 +111,5 @@ resta:
 
 comparar02:
 	cpi aux2, $00
-	breq suma
+	ld aux, Z
 	ret
