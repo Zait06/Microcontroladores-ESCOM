@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.7  C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm Thu Jun 04 10:56:30 2020
+AVRASM ver. 2.2.7  C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm Fri Jun 05 11:05:21 2020
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m8535def.inc'
 C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm(2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m8535def.inc'
@@ -899,35 +899,36 @@ C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\
                                  .def aux2=r18
                                  
 000000 c012                      rjmp main			; el programa brinca a esta instruccion cuando ocurre reset
-000001 c041                      rjmp incre
-000002 c042                      rjmp decre
-                                 .org $009
-000009 c02f                      rjmp sube
-                                 .org $012
-000012 c034                      rjmp pause
+000001 c040                      rjmp incre			; Registro $001 (INT0) tiene rutina 'incre'
+000002 c041                      rjmp decre			; Registro $002 (INT1) tiene rutina 'decre'
+                                 .org $009			; Salto al registro $009
+000009 c02e                      rjmp sube			; Se agrega la rutina para cada pulso
+                                 .org $012			; Salto al registro $012
+000012 c033                      rjmp pause			; Se agrega la rutina 'pause'
                                  
                                  main:
 000013 e50f                      	ldi aux, low(RAMEND)
 000014 bf0d                      	out spl, aux
 000015 e002                      	ldi aux, high(RAMEND)
-000016 bf0e                      	out sph, aux	; estas 4 instr. inicializan el SP
+000016 bf0e                      	out sph, aux	; Estas 4 instr. inicializan el SP
 000017 ef0f                      	ser aux
-000018 bb0a                      	out ddra, aux
-000019 bb04                      	out ddrc, aux
-00001a bb02                      	out portd,aux
+000018 bb0a                      	out ddra, aux	; Activamos los puetos 'A' para la salida
+                                 	; out ddrc, aux
+000019 bb02                      	out portd, aux	; Activamos los puertos 'D' como entrada
+00001a bb08                      	out portb, aux	; Activamos los puertos 'B' como entrada
 00001b e00e                      	ldi aux,$0E
-00001c bf05                      	out MCUCR,aux	; se establece INT0 para flanco de bajada e INT1 para flanco de subida
+00001c bf05                      	out MCUCR,aux	; Se establece INT0 para flanco de bajada e INT1 para flanco de subida
 00001d e400                      	ldi aux,$40
-00001e bf04                      	out MCUCSR,aux	; se establece INT2
+00001e bf04                      	out MCUCSR,aux	; Se establece INT2
 00001f ee00                      	ldi aux,$E0
-000020 bf0b                      	out GICR,aux	; se habilitan INT0 INT1 INT2
+000020 bf0b                      	out GICR,aux	; Se habilitan INT0 INT1 INT2
 000021 e005                      	ldi aux, 5
 000022 bf03                      	out tccr0, aux
 000023 e001                      	ldi aux, 1
 000024 bf09                      	out timsk, aux
 000025 9478                      	sei
                                  
-                                 load:
+                                 load:				; Valores del 0 al 9 en BCD
 000026 e34f                      	ldi R20, $3F
 000027 e056                      	ldi R21, $06
 000028 e56b                      	ldi R22, $5B
@@ -938,74 +939,65 @@ C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\
 00002d e2b7                      	ldi R27, $27
 00002e e7cf                      	ldi R28, $7F
 00002f e6df                      	ldi R29, $6F 
-000030 e021                      	ldi aux2, $01
+000030 e021                      	ldi aux2, $01	; Inicializa en 1 aux2
 000031 27ff                      	clr ZH
-000032 2711                      	clr cont	
+000032 2711                      	clr cont		; Contador en cero
                                  
                                  loop:
-                                 	;ldi ZL, 20
-000033 d015                      	rcall comparar00
-000034 d01b                      	rcall comparar01
-000035 d021                      	rcall comparar02
-                                 	;add ZL, cont
-                                 	;ld aux, Z
-000036 bb0b                      	out PORTA, aux
-000037 bb15                      	out PORTC, cont
-000038 cffa                      	rjmp loop
+000033 d014                      	rcall comparar00
+000034 d016                      	rcall comparar01
+000035 d018                      	rcall comparar02
+000036 bb0b                      	out PORTA, aux		; Se muestra el valor del contador en BCD
+                                 	; out PORTC, cont
+000037 cffb                      	rjmp loop
                                  
-                                 sube:				; Si llega a 10 el contador, este se inica de nuevo en cero
-000039 0f12                      	add cont,aux2
-00003a 301a                      	cpi cont, 10
-00003b f019                      	breq a_dece00
-00003c 3f1f                      	cpi cont, $ff
-00003d f019                      	breq a_dece01
-00003e 9518                      	reti
+                                 sube:
+000038 0f12                      	add cont,aux2
+000039 301a                      	cpi cont, 10
+00003a f019                      	breq a_dece00	; Si el contador es igual a 10, salta a a_dec00
+00003b 3f1f                      	cpi cont, $ff
+00003c f019                      	breq a_dece01	; Si el contador es igual a -1, salta a a_dec01
+00003d 9518                      	reti
                                  
                                  a_dece00:
-00003f 2711                      	clr cont
-000040 9518                      	reti
+00003e 2711                      	clr cont		; Pone en cero el contador
+00003f 9518                      	reti
                                  
                                  a_dece01:
-000041 e019                      	ldi cont,$09
-000042 9518                      	reti
+000040 e019                      	ldi cont,$09	; Pone en 9 el contador
+000041 9518                      	reti
                                  
-                                 incre:
-000043 e021                      	ldi aux2, $01
-000044 9518                      	reti
+                                 incre:				; Si INT0 es activado
+000042 e021                      	ldi aux2, $01	; aux2 toma el valor de 1
+000043 9518                      	reti
                                  
-                                 decre:
-000045 ef2f                      	ldi aux2, $ff
-000046 9518                      	reti
+                                 decre:				; Si INT1 es activado
+000044 ef2f                      	ldi aux2, $ff	; aux2 toma el valor de -1
+000045 9518                      	reti
                                  
-                                 pause:
-000047 e020                      	ldi aux2, $00
-000048 9518                      	reti
+                                 pause:				; Si INT2 es activado
+000046 e020                      	ldi aux2, $00	; aux2 toma el valor de 0
+000047 9518                      	reti
                                  
                                  comparar00:
-000049 3021                      	cpi aux2, $01
-00004a f009                      	breq suma
-00004b 9508                      	ret
-                                 
-                                 suma:
-00004c e1e4                      	ldi ZL, 20
-00004d 0fe1                      	add ZL, cont
-00004e 8100                      	ld aux, Z
-00004f 9508                      	ret
+000048 3021                      	cpi aux2, $01	; Si aux2 es 1
+000049 f039                      	breq BCD		; salta  a BCD
+00004a 9508                      	ret
                                  
                                  comparar01:
-000050 3f2f                      	cpi aux2, $ff
-000051 f009                      	breq resta
-000052 9508                      	ret
-                                 
-                                 resta:
-000053 e1ed                      	ldi ZL, 29
-000054 1be1                      	sub ZL, cont
-000055 8100                      	ld aux, Z
-000056 9508                      	ret
+00004b 3f2f                      	cpi aux2, $ff	; Si aux2 es -1
+00004c f021                      	breq BCD		; salta a BCD
+00004d 9508                      	ret
                                  
                                  comparar02:
-000057 3020                      	cpi aux2, $00
-000058 8100                      	ld aux, Z
+00004e 3020                      	cpi aux2, $00	; Si aux2 es 0
+00004f 8100                      	ld aux, Z		; Se matiene aux con el valor Z
+000050 9508                      	ret
+                                 
+                                 BCD:				; Pone el contador de binario a 7 segmentos
+000051 e1e4                      	ldi ZL, 20
+000052 0fe1                      	add ZL, cont
+000053 8100                      	ld aux, Z
 
 
 RESOURCE USE INFORMATION
@@ -1023,11 +1015,11 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega8535" register use summary:
-x  :   0 y  :   0 z  :   3 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
+x  :   0 y  :   0 z  :   2 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  22 r17:   9 r18:   8 r19:   0 r20:   1 
+r13:   0 r14:   0 r15:   0 r16:  21 r17:   7 r18:   8 r19:   0 r20:   1 
 r21:   1 r22:   1 r23:   1 r24:   1 r25:   1 r26:   1 r27:   1 r28:   1 
-r29:   1 r30:   4 r31:   1 
+r29:   1 r30:   2 r31:   1 
 Registers used: 16 out of 35 (45.7%)
 
 "ATmega8535" instruction use summary:
@@ -1040,22 +1032,22 @@ bset  :   0 bst   :   0 cbi   :   0 cbr   :   0 clc   :   0 clh   :   0
 cli   :   0 cln   :   0 clr   :   3 cls   :   0 clt   :   0 clv   :   0 
 clz   :   0 com   :   0 cp    :   0 cpc   :   0 cpi   :   5 cpse  :   0 
 dec   :   0 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 icall :   0 
-ijmp  :   0 in    :   0 inc   :   0 ld    :   3 ldd   :   0 ldi   :  24 
+ijmp  :   0 in    :   0 inc   :   0 ld    :   2 ldd   :   0 ldi   :  23 
 lds   :   0 lpm   :   0 lsl   :   0 lsr   :   0 mov   :   0 movw  :   0 
 mul   :   0 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 or    :   0 
-ori   :   0 out   :  12 pop   :   0 push  :   0 rcall :   3 ret   :   5 
+ori   :   0 out   :  11 pop   :   0 push  :   0 rcall :   3 ret   :   4 
 reti  :   6 rjmp  :   6 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
 sbi   :   0 sbic  :   0 sbis  :   0 sbiw  :   0 sbr   :   0 sbrc  :   0 
 sbrs  :   0 sec   :   0 seh   :   0 sei   :   1 sen   :   0 ser   :   1 
 ses   :   0 set   :   0 sev   :   0 sez   :   0 sleep :   0 spm   :   0 
-st    :   0 std   :   0 sts   :   0 sub   :   1 subi  :   0 swap  :   0 
+st    :   0 std   :   0 sts   :   0 sub   :   0 subi  :   0 swap  :   0 
 tst   :   0 wdr   :   0 
-Instructions used: 14 out of 110 (12.7%)
+Instructions used: 13 out of 110 (11.8%)
 
 "ATmega8535" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x0000b4    152      0    152    8192   1.9%
+[.cseg] 0x000000 0x0000aa    142      0    142    8192   1.7%
 [.dseg] 0x000060 0x000060      0      0      0     512   0.0%
 [.eseg] 0x000000 0x000000      0      0      0     512   0.0%
 

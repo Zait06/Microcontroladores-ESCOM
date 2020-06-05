@@ -23,18 +23,17 @@
  </OUTPUT_FILES>
  <LABELS>
   <main><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>15</LINE></main>
-  <incre><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>78</LINE></incre>
-  <decre><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>82</LINE></decre>
-  <sube><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>62</LINE></sube>
-  <pause><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>86</LINE></pause>
-  <load><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>36</LINE></load>
-  <loop><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>51</LINE></loop>
-  <comparar00><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>90</LINE></comparar00>
-  <comparar01><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>101</LINE></comparar01>
-  <comparar02><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>112</LINE></comparar02>
-  <a_dece00><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>70</LINE></a_dece00>
-  <a_dece01><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>74</LINE></a_dece01>
-  <suma><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>95</LINE></suma>
-  <resta><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>106</LINE></resta>
+  <incre><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>76</LINE></incre>
+  <decre><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>80</LINE></decre>
+  <sube><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>60</LINE></sube>
+  <pause><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>84</LINE></pause>
+  <load><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>37</LINE></load>
+  <loop><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>52</LINE></loop>
+  <comparar00><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>88</LINE></comparar00>
+  <comparar01><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>93</LINE></comparar01>
+  <comparar02><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>98</LINE></comparar02>
+  <a_dece00><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>68</LINE></a_dece00>
+  <a_dece01><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>72</LINE></a_dece01>
+  <BCD><FILE>C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm</FILE><LINE>103</LINE></BCD>
  </LABELS>
 </ASSEMBLER_INFO>

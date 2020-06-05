@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.7  C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm Thu Jun 04 10:56:30 2020
+AVRASM ver. 2.2.7  C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm Fri Jun 05 11:05:21 2020
 
 
 EQU  SIGNATURE_000 0000001e
@@ -595,16 +595,15 @@ DEF  aux          r16
 DEF  cont         r17
 DEF  aux2         r18
 CSEG main         00000013
-CSEG incre        00000043
-CSEG decre        00000045
-CSEG sube         00000039
-CSEG pause        00000047
+CSEG incre        00000042
+CSEG decre        00000044
+CSEG sube         00000038
+CSEG pause        00000046
 CSEG load         00000026
 CSEG loop         00000033
-CSEG comparar00   00000049
-CSEG comparar01   00000050
-CSEG comparar02   00000057
-CSEG a_dece00     0000003f
-CSEG a_dece01     00000041
-CSEG suma         0000004c
-CSEG resta        00000053
+CSEG comparar00   00000048
+CSEG comparar01   0000004b
+CSEG comparar02   0000004e
+CSEG a_dece00     0000003e
+CSEG a_dece01     00000040
+CSEG BCD          00000051
