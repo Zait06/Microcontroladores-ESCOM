@@ -50,15 +50,13 @@ load:				; Valores del 0 al 9 en BCD
 	clr cont		; Contador en cero
 
 loop:
-	rcall comparar00
-	rcall comparar01
-	rcall comparar02
+	rcall BCD
 	out PORTA, aux		; Se muestra el valor del contador en BCD
 	; out PORTC, cont
 	rjmp loop
 
-sube:
-	add cont,aux2
+sube:				; Se le suma al contador aux2 para saber si 
+	add cont,aux2	; avanza, retrocede o se queda ahí
 	cpi cont, 10
 	breq a_dece00	; Si el contador es igual a 10, salta a a_dec00
 	cpi cont, $ff
@@ -84,21 +82,6 @@ decre:				; Si INT1 es activado
 pause:				; Si INT2 es activado
 	ldi aux2, $00	; aux2 toma el valor de 0
 	reti
-
-comparar00:
-	cpi aux2, $01	; Si aux2 es 1
-	breq BCD		; salta  a BCD
-	ret
-
-comparar01:
-	cpi aux2, $ff	; Si aux2 es -1
-	breq BCD		; salta a BCD
-	ret
-
-comparar02:
-	cpi aux2, $00	; Si aux2 es 0
-	ld aux, Z		; Se matiene aux con el valor Z
-	ret
 
 BCD:				; Pone el contador de binario a 7 segmentos
 	ldi ZL, 20
