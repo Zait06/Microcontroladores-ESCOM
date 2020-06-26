@@ -1,0 +1,43 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.7</VERSION>
+ <DEVICE>"ATmega8535"</DEVICE>
+ <WORKING_DIR>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes</DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m8535def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\Debug\practica06.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>practica06.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>practica06.map</FILE>
+  <FILE>practica06.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <reset><FILE>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\main.asm</FILE><LINE>48</LINE></reset>
+  <main><FILE>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\main.asm</FILE><LINE>60</LINE></main>
+  <stst0><FILE>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\main.asm</FILE><LINE>171</LINE></stst0>
+  <stst1><FILE>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\main.asm</FILE><LINE>175</LINE></stst1>
+  <cuenta1><FILE>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\main.asm</FILE><LINE>127</LINE></cuenta1>
+  <cuenta0><FILE>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\main.asm</FILE><LINE>110</LINE></cuenta0>
+  <barre><FILE>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\main.asm</FILE><LINE>156</LINE></barre>
+  <stst2><FILE>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\main.asm</FILE><LINE>179</LINE></stst2>
+  <config_io><FILE>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\main.asm</FILE><LINE>78</LINE></config_io>
+  <texto0><FILE>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\main.asm</FILE><LINE>100</LINE></texto0>
+  <uno><FILE>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\main.asm</FILE><LINE>74</LINE></uno>
+  <conv><FILE>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\main.asm</FILE><LINE>148</LINE></conv>
+  <sal0><FILE>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\main.asm</FILE><LINE>120</LINE></sal0>
+  <tabla><FILE>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\main.asm</FILE><LINE>183</LINE></tabla>
+  <otro><FILE>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\main.asm</FILE><LINE>145</LINE></otro>
+  <sal1><FILE>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\main.asm</FILE><LINE>140</LINE></sal1>
+  <dos><FILE>C:\Users\zait-\Documents\Microcontroladores\24jun\code\practica06\main.asm</FILE><LINE>165</LINE></dos>
+ </LABELS>
+</ASSEMBLER_INFO>
