@@ -1,6 +1,6 @@
-	.include"m8535def.inc"
-	.def aux = r16
-	.def col = r17
+.include"m8535def.inc"
+.def aux = r16
+.def col = r17
 	
 .macro ldb		; Macro lbd
 	; @0 registro bajo
