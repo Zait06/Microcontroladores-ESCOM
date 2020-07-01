@@ -7,6 +7,15 @@ En cada carpeta se encuentra divididos el código y las simulaciones en una carp
 
 ## Prácticas:
 1. Contador binario.
+2. Operaciones binarias:
+	* Sumador
+	* Multiplicador
+3. Decodificadro hexadecimal.
+4. Contador de 0 a 99.
+5. Interruptores.
+6. Interruptores y timers en LCD.
+7. Convertidor Analógico Digital.
+8. De código C a código ASM.
 
 ## Integrantes del equipo:
 - Esquivel Pérez Jonathan Alfredo
