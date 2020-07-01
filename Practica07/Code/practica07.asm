@@ -1,3 +1,4 @@
+.include"m8535def.inc"
 .def adl = r17
 .def adh = r16
 .def tecla = r18

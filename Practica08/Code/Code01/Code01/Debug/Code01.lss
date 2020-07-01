@@ -1,12 +1,12 @@
 
-AVRASM ver. 2.2.7  C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm Sun Jun 07 14:13:57 2020
+AVRASM ver. 2.2.7  C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica08\Code\Code01\Code01\main.asm Wed Jul 01 09:10:30 2020
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m8535def.inc'
-C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm(2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m8535def.inc'
+C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica08\Code\Code01\Code01\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m8535def.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m8535def.inc'
-C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\codigo05\codigo05\main.asm(2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m8535def.inc'
+C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica08\Code\Code01\Code01\main.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\avrasm\inc\m8535def.inc'
                                  
-                                 
+                                 .include"m8535def.inc"
                                  
                                  ;***** Created: 2011-02-09 12:03 ******* Source: ATmega8535.xml **********
                                  ;*************************************************************************
@@ -850,7 +850,6 @@ C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\
                                  #endif  /* _M8535DEF_INC_ */
                                  
                                  
-                                 .include "m8535def.inc"
                                  
                                  ;***** Created: 2011-02-09 12:03 ******* Source: ATmega8535.xml **********
                                  ;*************************************************************************
@@ -895,92 +894,65 @@ C:\Users\zait-\Documents\Microcontroladores\Microcontroladores-ESCOM\Practica05\
                                  #endif  /* _M8535DEF_INC_ */
                                  
                                  .def aux=r16
-                                 .def cont=r17
-                                 .def aux2=r18
+                                 .def aux2=r17
+                                 .def aux3=r18
+                                 .def cont = r19
+                                 .def contWing = r20
+                                 .def unid = r21
+                                 .def dece = r22
                                  
-000000 c012                      rjmp main			; el programa brinca a esta instruccion cuando ocurre reset
-000001 c03e                      rjmp incre			; Registro $001 (INT0) tiene rutina 'incre'
-000002 c03f                      rjmp decre			; Registro $002 (INT1) tiene rutina 'decre'
-                                 .org $009			; Salto al registro $009
-000009 c02c                      rjmp sube			; Se agrega la rutina para cada pulso
-                                 .org $012			; Salto al registro $012
-000012 c031                      rjmp pause			; Se agrega la rutina 'pause'
+000000 c009                      rjmp main
+                                 .org $004
+000004 c017                      rjmp tono ; timer2 ovf
+                                 .org $008
+000008 c01a                      rjmp seg5 ; timer1 ovf
+000009 c01c                      rjmp cuenta ; timer0 ovf
                                  
                                  main:
-000013 e50f                      	ldi aux, low(RAMEND)
-000014 bf0d                      	out spl, aux
-000015 e002                      	ldi aux, high(RAMEND)
-000016 bf0e                      	out sph, aux	; Estas 4 instr. inicializan el SP
-000017 ef0f                      	ser aux
-000018 bb0a                      	out ddra, aux	; Activamos los puetos 'A' para la salida
-                                 	; out ddrc, aux
-000019 bb02                      	out portd, aux	; Activamos los puertos 'D' como entrada
-00001a bb08                      	out portb, aux	; Activamos los puertos 'B' como entrada
-00001b e00e                      	ldi aux,$0E
-00001c bf05                      	out MCUCR,aux	; Se establece INT0 para flanco de bajada e INT1 para flanco de subida
-00001d e400                      	ldi aux,$40
-00001e bf04                      	out MCUCSR,aux	; Se establece INT2
-00001f ee00                      	ldi aux,$E0
-000020 bf0b                      	out GICR,aux	; Se habilitan INT0 INT1 INT2
-000021 e005                      	ldi aux, 5
-000022 bf03                      	out tccr0, aux
-000023 e001                      	ldi aux, 1
-000024 bf09                      	out timsk, aux
-000025 9478                      	sei
-                                 
-                                 load:				; Valores del 0 al 9 en BCD
-000026 e34f                      	ldi R20, $3F
-000027 e056                      	ldi R21, $06
-000028 e56b                      	ldi R22, $5B
-000029 e47f                      	ldi R23, $4F
-00002a e686                      	ldi R24, $66
-00002b e69d                      	ldi R25, $6D
-00002c e7ad                      	ldi R26, $7D
-00002d e2b7                      	ldi R27, $27
-00002e e7cf                      	ldi R28, $7F
-00002f e6df                      	ldi R29, $6F 
-000030 e021                      	ldi aux2, $01	; Inicializa en 1 aux2
-000031 27ff                      	clr ZH
-000032 2711                      	clr cont		; Contador en cero
+00000a e50f                      	ldi aux,low(RAMEND)
+00000b bf0d                      	out spl,aux
+00000c e002                      	ldi aux,high(RAMEND)
+00000d bf0e                      	out sph,aux
+00000e ef0f                      	ser aux
+00000f bb07                      	out ddrb,aux
+000010 bb0a                      	out ddra,aux
+000011 bb04                      	out ddrc,aux
+000012 e006                      	ldi aux,6
+000013 bf03                      	out tccr0,aux
+000014 e001                      	ldi aux,1
+000015 bf09                      	out timsk,aux
+000016 2733                      	clr cont
+000017 9478                      	sei
                                  
                                  loop:
-000033 d012                      	rcall BCD
-000034 bb0b                      	out PORTA, aux		; Se muestra el valor del contador en BCD
-                                 	; out PORTC, cont
-000035 cffd                      	rjmp loop
+000018 0000                      	nop
+000019 0000                      	nop
+00001a bb3b                      	out porta,cont
+00001b cffc                      	rjmp loop
                                  
-                                 sube:				; Se le suma al contador aux2 para saber si 
-000036 0f12                      	add cont,aux2	; avanza, retrocede o se queda ahí
-000037 301a                      	cpi cont, 10
-000038 f019                      	breq a_dece00	; Si el contador es igual a 10, salta a a_dec00
-000039 3f1f                      	cpi cont, $ff
-00003a f019                      	breq a_dece01	; Si el contador es igual a -1, salta a a_dec01
-00003b 9518                      	reti
+                                 tono:
+00001c e703                      	ldi aux,115
+00001d bd04                      	out tcnt2,aux
+00001e ef0f                      	ser aux
+00001f b316                      	in r17,pinb
+000020 2710                      	eor r17,aux
+000021 bb18                      	out portb,r17
+000022 9518                      	reti
                                  
-                                 a_dece00:
-00003c 2711                      	clr cont		; Pone en cero el contador
-00003d 9518                      	reti
+                                 seg5:
+000023 e011                      	ldi aux2,1
+000024 bf19                      	out timsk,aux2
+000025 9518                      	reti
                                  
-                                 a_dece01:
-00003e e019                      	ldi cont,$09	; Pone en 9 el contador
-00003f 9518                      	reti
-                                 
-                                 incre:				; Si INT0 es activado
-000040 e021                      	ldi aux2, $01	; aux2 toma el valor de 1
-000041 9518                      	reti
-                                 
-                                 decre:				; Si INT1 es activado
-000042 ef2f                      	ldi aux2, $ff	; aux2 toma el valor de -1
-000043 9518                      	reti
-                                 
-                                 pause:				; Si INT2 es activado
-000044 e020                      	ldi aux2, $00	; aux2 toma el valor de 0
-000045 9518                      	reti
-                                 
-                                 BCD:				; Pone el contador de binario a 7 segmentos
-000046 e1e4                      	ldi ZL, 20
-000047 0fe1                      	add ZL, cont
-000048 8100                      	ld aux, Z
+                                 cuenta:
+000026 e327                      	ldi aux3,55
+000027 bf22                      	out tcnt0,aux3
+000028 eb25                      	ldi aux3,$b5
+000029 bd2c                      	out tcnt1l,aux3
+00002a eb23                      	ldi aux3,$b3
+00002b bd2d                      	out tcnt1h,aux3
+00002c e425                      	ldi aux3,$45;     01000101
+00002d bf29                      	out timsk,aux3
 
 
 RESOURCE USE INFORMATION
@@ -998,39 +970,39 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega8535" register use summary:
-x  :   0 y  :   0 z  :   1 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
+x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:  20 r17:   7 r18:   5 r19:   0 r20:   1 
-r21:   1 r22:   1 r23:   1 r24:   1 r25:   1 r26:   1 r27:   1 r28:   1 
-r29:   1 r30:   2 r31:   1 
-Registers used: 16 out of 35 (45.7%)
+r13:   0 r14:   0 r15:   0 r16:  16 r17:   5 r18:   8 r19:   2 r20:   0 
+r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
+r29:   0 r30:   0 r31:   0 
+Registers used: 4 out of 35 (11.4%)
 
 "ATmega8535" instruction use summary:
-.lds  :   0 .sts  :   0 adc   :   0 add   :   2 adiw  :   0 and   :   0 
+.lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
-brcc  :   0 brcs  :   0 breq  :   2 brge  :   0 brhc  :   0 brhs  :   0 
+brcc  :   0 brcs  :   0 breq  :   0 brge  :   0 brhc  :   0 brhs  :   0 
 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 brne  :   0 
 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 brvs  :   0 
 bset  :   0 bst   :   0 cbi   :   0 cbr   :   0 clc   :   0 clh   :   0 
-cli   :   0 cln   :   0 clr   :   3 cls   :   0 clt   :   0 clv   :   0 
-clz   :   0 com   :   0 cp    :   0 cpc   :   0 cpi   :   2 cpse  :   0 
-dec   :   0 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 icall :   0 
-ijmp  :   0 in    :   0 inc   :   0 ld    :   1 ldd   :   0 ldi   :  23 
+cli   :   0 cln   :   0 clr   :   1 cls   :   0 clt   :   0 clv   :   0 
+clz   :   0 com   :   0 cp    :   0 cpc   :   0 cpi   :   0 cpse  :   0 
+dec   :   0 eor   :   1 fmul  :   0 fmuls :   0 fmulsu:   0 icall :   0 
+ijmp  :   0 in    :   1 inc   :   0 ld    :   0 ldd   :   0 ldi   :  10 
 lds   :   0 lpm   :   0 lsl   :   0 lsr   :   0 mov   :   0 movw  :   0 
-mul   :   0 muls  :   0 mulsu :   0 neg   :   0 nop   :   0 or    :   0 
-ori   :   0 out   :  11 pop   :   0 push  :   0 rcall :   1 ret   :   1 
-reti  :   6 rjmp  :   6 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
+mul   :   0 muls  :   0 mulsu :   0 neg   :   0 nop   :   2 or    :   0 
+ori   :   0 out   :  15 pop   :   0 push  :   0 rcall :   0 ret   :   0 
+reti  :   3 rjmp  :   5 rol   :   0 ror   :   0 sbc   :   0 sbci  :   0 
 sbi   :   0 sbic  :   0 sbis  :   0 sbiw  :   0 sbr   :   0 sbrc  :   0 
-sbrs  :   0 sec   :   0 seh   :   0 sei   :   1 sen   :   0 ser   :   1 
+sbrs  :   0 sec   :   0 seh   :   0 sei   :   1 sen   :   0 ser   :   2 
 ses   :   0 set   :   0 sev   :   0 sez   :   0 sleep :   0 spm   :   0 
 st    :   0 std   :   0 sts   :   0 sub   :   0 subi  :   0 swap  :   0 
 tst   :   0 wdr   :   0 
-Instructions used: 13 out of 110 (11.8%)
+Instructions used: 10 out of 110 (9.1%)
 
 "ATmega8535" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000094    120      0    120    8192   1.5%
+[.cseg] 0x000000 0x00005e     82      0     82    8192   1.0%
 [.dseg] 0x000060 0x000060      0      0      0     512   0.0%
 [.eseg] 0x000000 0x000000      0      0      0     512   0.0%
 

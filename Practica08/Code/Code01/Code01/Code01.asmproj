@@ -11,9 +11,9 @@
     <OutputFileExtension>.obj</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
     <Language>ASSEMBLY</Language>
-    <AssemblyName>codigo05</AssemblyName>
-    <Name>codigo05</Name>
-    <RootNamespace>codigo05</RootNamespace>
+    <AssemblyName>Code01</AssemblyName>
+    <Name>Code01</Name>
+    <RootNamespace>Code01</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <EntryFile>$(MSBuildProjectDirectory)\main.asm</EntryFile>
     <KeepTimersRunning>true</KeepTimersRunning>
