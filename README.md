@@ -5,6 +5,9 @@ En este repositorio se encuentras las practicas de microcontroladores.
 
 En cada carpeta se encuentra divididos el código y las simulaciones en una carpeta, además, se encuentra el reporte de dicha práctica.
 
+## Prácticas:
+1. Contador binario.
+
 ## Integrantes del equipo:
 - Esquivel Pérez Jonathan Alfredo
 - Hernández López Ángel Zait
