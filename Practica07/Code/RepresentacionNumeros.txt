@@ -1,0 +1,33 @@
+Logica de los número para mostrarlos en el display de 7 segmentos
+
+numBin = numHex
+Representa el valor de ADCL
+	simbolo - numBin = numHex -> numHex
+	Representa el simbolo que queremos ver, seguido del valor que tiene al presionar la tecla
+	en el registro correspondiente a ADCH, seguido de su numero hexadecimal equivalente
+	y por último el valor hexadecimal del símbolo para el display de 7 segmentos
+
+11000000 = $C0
+	1 - 11001000 = $C8 -> $06
+	+ - 01010100‬ = $54 -> $09
+	4 - 10110111 = $B7 -> $66
+	8 - 10001001 = $89 -> $7f 
+
+01000000 = $40
+	C - 11011000 = $D8 -> $39
+	- - 01010010 = $52 -> $40
+	x - 01001111 = $4F -> $76
+	9 - 01101111 = $6F -> $6F
+	
+10000000 = $80
+	0 - 10100010 = $A2 -> $3F
+	2 - 10011001 = $99 -> $5B
+	3 - 01111001 = $79 -> $4F
+	5 - 10001111 = $8F -> $6D
+	7 - 10101110 = $AE -> $27
+	/ - 01001101 = $4D -> $52
+	
+	
+00000000 = $00
+	= - 01111111 = $7F -> $41
+	6 - 01110011 = $73 -> $7D
