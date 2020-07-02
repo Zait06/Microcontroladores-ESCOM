@@ -1,0 +1,152 @@
+
+CodigoC00.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000086  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  000000da  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  000000da  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000010c  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000040  00000000  00000000  0000014c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000606  00000000  00000000  0000018c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000556  00000000  00000000  00000792  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000026c  00000000  00000000  00000ce8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000064  00000000  00000000  00000f54  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000330  00000000  00000000  00000fb8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000036  00000000  00000000  000012e8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000030  00000000  00000000  0000131e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	14 c0       	rjmp	.+40     	; 0x2a <__ctors_end>
+   2:	1b c0       	rjmp	.+54     	; 0x3a <__bad_interrupt>
+   4:	1a c0       	rjmp	.+52     	; 0x3a <__bad_interrupt>
+   6:	19 c0       	rjmp	.+50     	; 0x3a <__bad_interrupt>
+   8:	18 c0       	rjmp	.+48     	; 0x3a <__bad_interrupt>
+   a:	17 c0       	rjmp	.+46     	; 0x3a <__bad_interrupt>
+   c:	16 c0       	rjmp	.+44     	; 0x3a <__bad_interrupt>
+   e:	15 c0       	rjmp	.+42     	; 0x3a <__bad_interrupt>
+  10:	14 c0       	rjmp	.+40     	; 0x3a <__bad_interrupt>
+  12:	13 c0       	rjmp	.+38     	; 0x3a <__bad_interrupt>
+  14:	12 c0       	rjmp	.+36     	; 0x3a <__bad_interrupt>
+  16:	11 c0       	rjmp	.+34     	; 0x3a <__bad_interrupt>
+  18:	10 c0       	rjmp	.+32     	; 0x3a <__bad_interrupt>
+  1a:	0f c0       	rjmp	.+30     	; 0x3a <__bad_interrupt>
+  1c:	0e c0       	rjmp	.+28     	; 0x3a <__bad_interrupt>
+  1e:	0d c0       	rjmp	.+26     	; 0x3a <__bad_interrupt>
+  20:	0c c0       	rjmp	.+24     	; 0x3a <__bad_interrupt>
+  22:	0b c0       	rjmp	.+22     	; 0x3a <__bad_interrupt>
+  24:	0a c0       	rjmp	.+20     	; 0x3a <__bad_interrupt>
+  26:	09 c0       	rjmp	.+18     	; 0x3a <__bad_interrupt>
+  28:	08 c0       	rjmp	.+16     	; 0x3a <__bad_interrupt>
+
+0000002a <__ctors_end>:
+  2a:	11 24       	eor	r1, r1
+  2c:	1f be       	out	0x3f, r1	; 63
+  2e:	cf e5       	ldi	r28, 0x5F	; 95
+  30:	d2 e0       	ldi	r29, 0x02	; 2
+  32:	de bf       	out	0x3e, r29	; 62
+  34:	cd bf       	out	0x3d, r28	; 61
+  36:	1b d0       	rcall	.+54     	; 0x6e <main>
+  38:	24 c0       	rjmp	.+72     	; 0x82 <_exit>
+
+0000003a <__bad_interrupt>:
+  3a:	e2 cf       	rjmp	.-60     	; 0x0 <__vectors>
+
+0000003c <config_io>:
+	PORTD = _BV(PD2);
+}
+void retardo(void){
+	int i;
+	for(i=0; i<25000; i++);
+}
+  3c:	8f e0       	ldi	r24, 0x0F	; 15
+  3e:	84 bb       	out	0x14, r24	; 20
+  40:	8b ef       	ldi	r24, 0xFB	; 251
+  42:	81 bb       	out	0x11, r24	; 17
+  44:	84 e0       	ldi	r24, 0x04	; 4
+  46:	82 bb       	out	0x12, r24	; 18
+  48:	08 95       	ret
+
+0000004a <secuencia1>:
+void secuencia1(void){
+	PORTC = step1;
+  4a:	88 e0       	ldi	r24, 0x08	; 8
+  4c:	85 bb       	out	0x15, r24	; 21
+	retardo();
+	PORTC = step2;
+  4e:	84 e0       	ldi	r24, 0x04	; 4
+  50:	85 bb       	out	0x15, r24	; 21
+	retardo();
+	PORTC = step3;
+  52:	82 e0       	ldi	r24, 0x02	; 2
+  54:	85 bb       	out	0x15, r24	; 21
+	retardo();
+	PORTC = step4;
+  56:	81 e0       	ldi	r24, 0x01	; 1
+  58:	85 bb       	out	0x15, r24	; 21
+  5a:	08 95       	ret
+
+0000005c <secuencia2>:
+	retardo();
+}
+void secuencia2(void){
+	PORTC = step4;
+  5c:	81 e0       	ldi	r24, 0x01	; 1
+  5e:	85 bb       	out	0x15, r24	; 21
+	retardo();
+	PORTC = step3;
+  60:	82 e0       	ldi	r24, 0x02	; 2
+  62:	85 bb       	out	0x15, r24	; 21
+	retardo();
+	PORTC = step2;
+  64:	84 e0       	ldi	r24, 0x04	; 4
+  66:	85 bb       	out	0x15, r24	; 21
+	retardo();
+	PORTC = step1;
+  68:	88 e0       	ldi	r24, 0x08	; 8
+  6a:	85 bb       	out	0x15, r24	; 21
+  6c:	08 95       	ret
+
+0000006e <main>:
+	retardo();
+}
+int main(void){
+	config_io();
+  6e:	e6 df       	rcall	.-52     	; 0x3c <config_io>
+	while(1){
+		switch(PIND){
+  70:	80 b3       	in	r24, 0x10	; 16
+  72:	88 23       	and	r24, r24
+  74:	21 f0       	breq	.+8      	; 0x7e <main+0x10>
+  76:	84 30       	cpi	r24, 0x04	; 4
+  78:	d9 f7       	brne	.-10     	; 0x70 <main+0x2>
+			case(4):
+			secuencia1();
+  7a:	e7 df       	rcall	.-50     	; 0x4a <secuencia1>
+			break;
+  7c:	f9 cf       	rjmp	.-14     	; 0x70 <main+0x2>
+			case(0):
+			secuencia2();
+  7e:	ee df       	rcall	.-36     	; 0x5c <secuencia2>
+			break;
+  80:	f7 cf       	rjmp	.-18     	; 0x70 <main+0x2>
+
+00000082 <_exit>:
+  82:	f8 94       	cli
+
+00000084 <__stop_program>:
+  84:	ff cf       	rjmp	.-2      	; 0x84 <__stop_program>

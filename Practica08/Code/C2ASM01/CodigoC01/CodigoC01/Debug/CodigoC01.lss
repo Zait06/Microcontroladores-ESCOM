@@ -1,0 +1,218 @@
+
+CodigoC01.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000ea  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  0000013e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  0000013e  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000170  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000040  00000000  00000000  000001b0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000006df  00000000  00000000  000001f0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000005e2  00000000  00000000  000008cf  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000310  00000000  00000000  00000eb1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000000ac  00000000  00000000  000011c4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000003d0  00000000  00000000  00001270  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000152  00000000  00000000  00001640  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000030  00000000  00000000  00001792  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	14 c0       	rjmp	.+40     	; 0x2a <__ctors_end>
+   2:	40 c0       	rjmp	.+128    	; 0x84 <__vector_1>
+   4:	1a c0       	rjmp	.+52     	; 0x3a <__bad_interrupt>
+   6:	19 c0       	rjmp	.+50     	; 0x3a <__bad_interrupt>
+   8:	18 c0       	rjmp	.+48     	; 0x3a <__bad_interrupt>
+   a:	17 c0       	rjmp	.+46     	; 0x3a <__bad_interrupt>
+   c:	16 c0       	rjmp	.+44     	; 0x3a <__bad_interrupt>
+   e:	15 c0       	rjmp	.+42     	; 0x3a <__bad_interrupt>
+  10:	14 c0       	rjmp	.+40     	; 0x3a <__bad_interrupt>
+  12:	13 c0       	rjmp	.+38     	; 0x3a <__bad_interrupt>
+  14:	12 c0       	rjmp	.+36     	; 0x3a <__bad_interrupt>
+  16:	11 c0       	rjmp	.+34     	; 0x3a <__bad_interrupt>
+  18:	10 c0       	rjmp	.+32     	; 0x3a <__bad_interrupt>
+  1a:	0f c0       	rjmp	.+30     	; 0x3a <__bad_interrupt>
+  1c:	0e c0       	rjmp	.+28     	; 0x3a <__bad_interrupt>
+  1e:	0d c0       	rjmp	.+26     	; 0x3a <__bad_interrupt>
+  20:	0c c0       	rjmp	.+24     	; 0x3a <__bad_interrupt>
+  22:	0b c0       	rjmp	.+22     	; 0x3a <__bad_interrupt>
+  24:	0a c0       	rjmp	.+20     	; 0x3a <__bad_interrupt>
+  26:	09 c0       	rjmp	.+18     	; 0x3a <__bad_interrupt>
+  28:	08 c0       	rjmp	.+16     	; 0x3a <__bad_interrupt>
+
+0000002a <__ctors_end>:
+  2a:	11 24       	eor	r1, r1
+  2c:	1f be       	out	0x3f, r1	; 63
+  2e:	cf e5       	ldi	r28, 0x5F	; 95
+  30:	d2 e0       	ldi	r29, 0x02	; 2
+  32:	de bf       	out	0x3e, r29	; 62
+  34:	cd bf       	out	0x3d, r28	; 61
+  36:	54 d0       	rcall	.+168    	; 0xe0 <main>
+  38:	56 c0       	rjmp	.+172    	; 0xe6 <_exit>
+
+0000003a <__bad_interrupt>:
+  3a:	e2 cf       	rjmp	.-60     	; 0x0 <__vectors>
+
+0000003c <_Z9config_iov>:
+#define step2  4
+#define step3  2
+#define step4  1
+
+void config_io(void){
+	DDRC = 0x0F;
+  3c:	8f e0       	ldi	r24, 0x0F	; 15
+  3e:	84 bb       	out	0x14, r24	; 20
+	DDRD = 0b11111011;
+  40:	8b ef       	ldi	r24, 0xFB	; 251
+  42:	81 bb       	out	0x11, r24	; 17
+	PORTD = _BV(PD2);
+  44:	84 e0       	ldi	r24, 0x04	; 4
+  46:	82 bb       	out	0x12, r24	; 18
+	MCUCR = _BV(ISC01);
+  48:	82 e0       	ldi	r24, 0x02	; 2
+  4a:	85 bf       	out	0x35, r24	; 53
+	GICR = _BV(INT0);
+  4c:	80 e4       	ldi	r24, 0x40	; 64
+  4e:	8b bf       	out	0x3b, r24	; 59
+	sei();
+  50:	78 94       	sei
+  52:	08 95       	ret
+
+00000054 <_Z7retardov>:
+}
+
+void retardo(void){
+  54:	89 e1       	ldi	r24, 0x19	; 25
+  56:	90 e0       	ldi	r25, 0x00	; 0
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  58:	e3 ec       	ldi	r30, 0xC3	; 195
+  5a:	f9 e0       	ldi	r31, 0x09	; 9
+  5c:	31 97       	sbiw	r30, 0x01	; 1
+  5e:	f1 f7       	brne	.-4      	; 0x5c <_Z7retardov+0x8>
+  60:	00 c0       	rjmp	.+0      	; 0x62 <_Z7retardov+0xe>
+  62:	00 00       	nop
+  64:	01 97       	sbiw	r24, 0x01	; 1
+	int i;
+	for(i=0; i<25; i++) _delay_ms(10);
+  66:	c1 f7       	brne	.-16     	; 0x58 <_Z7retardov+0x4>
+}
+  68:	08 95       	ret
+
+0000006a <_Z10secuencia1v>:
+
+void secuencia1(void){
+	PORTC = step1;
+  6a:	88 e0       	ldi	r24, 0x08	; 8
+  6c:	85 bb       	out	0x15, r24	; 21
+	retardo();
+  6e:	f2 df       	rcall	.-28     	; 0x54 <_Z7retardov>
+	PORTC = step2;
+  70:	84 e0       	ldi	r24, 0x04	; 4
+  72:	85 bb       	out	0x15, r24	; 21
+	retardo();
+  74:	ef df       	rcall	.-34     	; 0x54 <_Z7retardov>
+	PORTC = step3;
+  76:	82 e0       	ldi	r24, 0x02	; 2
+  78:	85 bb       	out	0x15, r24	; 21
+	retardo();
+  7a:	ec df       	rcall	.-40     	; 0x54 <_Z7retardov>
+	PORTC = step4;
+  7c:	81 e0       	ldi	r24, 0x01	; 1
+  7e:	85 bb       	out	0x15, r24	; 21
+	retardo();
+  80:	e9 df       	rcall	.-46     	; 0x54 <_Z7retardov>
+  82:	08 95       	ret
+
+00000084 <__vector_1>:
+}
+
+ISR(INT0_vect){
+  84:	1f 92       	push	r1
+  86:	0f 92       	push	r0
+  88:	0f b6       	in	r0, 0x3f	; 63
+  8a:	0f 92       	push	r0
+  8c:	11 24       	eor	r1, r1
+  8e:	2f 93       	push	r18
+  90:	3f 93       	push	r19
+  92:	4f 93       	push	r20
+  94:	5f 93       	push	r21
+  96:	6f 93       	push	r22
+  98:	7f 93       	push	r23
+  9a:	8f 93       	push	r24
+  9c:	9f 93       	push	r25
+  9e:	af 93       	push	r26
+  a0:	bf 93       	push	r27
+  a2:	ef 93       	push	r30
+  a4:	ff 93       	push	r31
+	PORTC = step4;
+  a6:	81 e0       	ldi	r24, 0x01	; 1
+  a8:	85 bb       	out	0x15, r24	; 21
+	retardo();
+  aa:	d4 df       	rcall	.-88     	; 0x54 <_Z7retardov>
+	PORTC = step3;
+  ac:	82 e0       	ldi	r24, 0x02	; 2
+  ae:	85 bb       	out	0x15, r24	; 21
+	retardo();
+  b0:	d1 df       	rcall	.-94     	; 0x54 <_Z7retardov>
+	PORTC = step2;
+  b2:	84 e0       	ldi	r24, 0x04	; 4
+  b4:	85 bb       	out	0x15, r24	; 21
+	retardo();
+  b6:	ce df       	rcall	.-100    	; 0x54 <_Z7retardov>
+	PORTC = step1;
+  b8:	88 e0       	ldi	r24, 0x08	; 8
+  ba:	85 bb       	out	0x15, r24	; 21
+	retardo();
+  bc:	cb df       	rcall	.-106    	; 0x54 <_Z7retardov>
+}
+  be:	ff 91       	pop	r31
+  c0:	ef 91       	pop	r30
+  c2:	bf 91       	pop	r27
+  c4:	af 91       	pop	r26
+  c6:	9f 91       	pop	r25
+  c8:	8f 91       	pop	r24
+  ca:	7f 91       	pop	r23
+  cc:	6f 91       	pop	r22
+  ce:	5f 91       	pop	r21
+  d0:	4f 91       	pop	r20
+  d2:	3f 91       	pop	r19
+  d4:	2f 91       	pop	r18
+  d6:	0f 90       	pop	r0
+  d8:	0f be       	out	0x3f, r0	; 63
+  da:	0f 90       	pop	r0
+  dc:	1f 90       	pop	r1
+  de:	18 95       	reti
+
+000000e0 <main>:
+
+int main(void){
+	config_io();
+  e0:	ad df       	rcall	.-166    	; 0x3c <_Z9config_iov>
+	while(1){
+		secuencia1();
+  e2:	c3 df       	rcall	.-122    	; 0x6a <_Z10secuencia1v>
+  e4:	fe cf       	rjmp	.-4      	; 0xe2 <main+0x2>
+
+000000e6 <_exit>:
+  e6:	f8 94       	cli
+
+000000e8 <__stop_program>:
+  e8:	ff cf       	rjmp	.-2      	; 0xe8 <__stop_program>
