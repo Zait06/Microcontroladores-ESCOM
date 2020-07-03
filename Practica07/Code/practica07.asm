@@ -7,10 +7,10 @@ rjmp  Start
 RJMP CONV
 
 Start:
-	LDI R16,LOW(RAMEND)
-	OUT SPL,R16
-	LDI R16,HIGH(RAMEND)
-	OUT SPH,R16
+	LDI R16,LOW(RAMEND) ;carga bytes bajos de la sram en r16
+	OUT SPL,R16 ;coloca el r16 en sph, byte bajo de la pila
+	LDI R16,HIGH(RAMEND) ;carga bytes altos de la sram en r16
+	OUT SPH,R16 ;coloca el r16 en sph, byte alto de la pila
 	SER R16
 	OUT DDRD,R16
 	OUT DDRB,R16
@@ -26,7 +26,7 @@ Loop:
 	OUT PORTD,adl
 	OUT PORTB,adh
 	out portc,tecla
-	rjmp  Loop
+	rjmp  Loop ;Salta a Loop
 
 CONV:
 	IN adl,ADCL
