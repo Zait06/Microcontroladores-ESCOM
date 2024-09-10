@@ -18,14 +18,13 @@ En cada carpeta se encuentra divididos el código y las simulaciones en una carp
 8. De código C a código ASM.
 
 ## Compilacion
-´´´sh
+```sh
 # compilacion
 avr-gcc -g -mmcu=atmega8535 -o mainS.elf ContadorBin.S -I/usr/avr/include
 
 # generar hex
 avr-objcopy -j .text -j .data -O ihex main.elf main.hex
-
-´´´
+```
 
 ## Integrantes del equipo:
 - Esquivel Pérez Jonathan Alfredo
