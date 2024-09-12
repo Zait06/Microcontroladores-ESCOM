@@ -1,6 +1,6 @@
 *.bat
 *.tmp
-*.asp
+*.aps
 *.aws
 *.hex
 *.map
